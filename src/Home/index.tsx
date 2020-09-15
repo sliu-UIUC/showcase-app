@@ -1,24 +1,7 @@
-import React from 'react';
+import React , {Component} from 'react';
 import './style.css';
 import styled from 'styled-components';
-
-
-const Button = styled.button`
-  margin: 0.5em 1em;
-  padding: 0.25em 1em;
-  height:30px; 
-  width:100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-
-  ${props => props.primary && css`
-    background: palevioletred;
-    color: white;
-  `}
-`;
+import { Link } from "react-router-dom";
 
 const Input = styled.input`
   height:30px; 
@@ -29,19 +12,38 @@ const Input = styled.input`
   left: 52%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  ${props => props.text}
 `;
 
 
-function Home() {
-  return (
-    <div>
-      <p class="welcomeTxt">Hi there! Welcome to your education showcase.</p>
-      <p class="namePromptTxt">Type your name and click "Enter" below to begin!</p>
-      <Input placeholder="Your name" class="nameInput"></Input>
-      <Button>Enter</Button>
-    </div>
-  );
+class Home extends Component<{}, { name: string }> {
+  constructor(props:any) {
+    super(props); 
+    this.updateName = this.updateName.bind(this);
+    this.state = {
+      name: ""
+    }
+  }
+
+  updateName(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({name:e.target.value});
+  }
+
+  render() {
+    return (
+      <div>
+        <p className="welcomeTxt">Hi there! Welcome to your education showcase.</p>
+        <p className="namePromptTxt">Type your name and click "Enter" below to begin!</p>
+        <Input placeholder="Your name"
+               className="nameInput" 
+               onChange={this.updateName}>  
+        </Input>
+
+        <Link to = {{ pathname: '/education', name: this.state.name}}>
+          <button className="enterButton">Enter</button>
+        </Link>
+      </div>
+    );
+  }
 }
 
 export default Home;

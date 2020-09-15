@@ -1,17 +1,16 @@
 import React  from 'react';
 import './App.css';
-import styled from 'styled-components';
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import Home from './Home/';
-
+import { BrowserRouter, Route} from "react-router-dom";
+import Home from './home';
+import Education from './edu_info';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Route path='/' exact component={Home}></Route>
-    </BrowserRouter>
-
-  );
+    return (
+      <BrowserRouter>
+        <Route path='/' exact component={Home}></Route>
+        <Route path='/education' exact component={Education}></Route>
+      </BrowserRouter>
+    );
 }
 
 export default App;
