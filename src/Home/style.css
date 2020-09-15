@@ -1,0 +1,21 @@
+.welcomeTxt {
+  height:30px; 
+  width:350px;
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 52%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.namePromptTxt {
+  height:30px; 
+  width:350px;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 52%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
