@@ -1,21 +1,47 @@
-.welcomeTxt {
+.greetingTxt {
   height:30px; 
   width:350px;
+  font-size: 20px;
   margin: 0;
   position: absolute;
-  top: 30%;
+  top: 10%;
   left: 52%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
-.namePromptTxt {
+.addEducationButton {
+  margin: 0.5em -0.5em;
+  padding: 0.25em 1em;
   height:30px; 
-  width:350px;
-  margin: 0;
+  width:200px;
   position: absolute;
-  top: 40%;
-  left: 52%;
+  top: 15%;
+  left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+.modalStyle overlay {
+    position: 'fixed';
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    background-color: 'rgba(255, 255, 255, 0.75)';
+}
+
+.modalStyle content {
+  position: 'absolute';
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  border: '1px solid #ccc';
+  background: '#fff';
+  overflow: 'auto';
+  -webkit-overflow-scrolling: 'touch';
+  border-radius:'4px';
+  outline: 'none';
+  padding: '20px';
 }
