@@ -1,3 +1,30 @@
+# Tool used
+  React, Typescript.
+  
+# Functionalities
+-
+- Users are able to enter as many educational experiences as they please;
+- When the user is typing the name of the school they went, it should be auto completed using an API call. (Public api can be found here: http://universities.hipolabs.com/search?name=) 
+- Users can enter the following information: Name of School, Degree, Field of study, Start year, End Year (Or expected), Grade, a Description field, and anything else you wish to add.
+
+# Goals
+
+Implement the screens based off the wireframes and api above using advanced techniques and industry best practices for your platform. Note that the wireframes may not be complete, so use your best judgment for UI/UX implementation. 
+
+## Introduction and Home screen:
+
+- Static text
+- Input field for user
+- Enter button takes user to the Main screen
+
+## Main screen
+
+- Dynamic text
+- Button to open up new modal to add a new education component
+- Side panel acts as a bookmark menu of the list of education added
+- Each new education added should appear above the previous, i.e. descending order of most recent
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
