@@ -23,8 +23,16 @@ Implement the screens based off the wireframes and api above using advanced tech
 - Side panel acts as a bookmark menu of the list of education added
 - Each new education added should appear above the previous, i.e. descending order of most recent
 
+## Add education modal
+
+- Background Main screen should dim down when modal opens
+- Modal allows the user to add the relevant information and save it.
+
+-----------------------------------------------------------------------------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
 
 ## Available Scripts
 
