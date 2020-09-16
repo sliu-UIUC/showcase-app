@@ -1,6 +1,8 @@
 import React , {Component} from 'react';
 import './style.css';
 import Modal from 'react-modal';
+import { sortBy } from 'sort-by-typescript';
+
 
 Modal.setAppElement('#root');
 
@@ -20,8 +22,7 @@ let monthMap = new Map([
 ]);
 
 class Edu_info extends Component<{}, 
-  { name: string, showModal: boolean, showSchoolList: boolean, 
-      educations: Array<string>, edu_details: Array<any>, schoolNames:string[] }> {
+  { name: string, showModal: boolean, showSchoolList: boolean, edu_details: Array<any>, schoolNames:string[] }> {
   constructor(props:any) {
     super(props);
     
@@ -34,7 +35,6 @@ class Edu_info extends Component<{},
       name: this.props.location.name,
       showModal: false, 
       showSchoolList:false,
-      educations: [], 
       edu_details: [], 
       schoolNames: []
     }
@@ -85,9 +85,9 @@ class Edu_info extends Component<{},
       gpa: edu.gpa.value, 
       description : edu.description.value
     }
-
-    this.state.educations.unshift(data.schoolName);
     this.state.edu_details.unshift(data);
+    this.state.edu_details.sort(sortBy('endY'))
+    this.state.edu_details.reverse();
     this.handleCloseModal();
   }
 
@@ -180,8 +180,8 @@ class Edu_info extends Component<{},
 
         {/* Side Panel */}
         <ul>
-          {this.state.educations.map(value => {
-            return <div>{value}</div> 
+          {this.state.edu_details.map(value => {
+            return <div>{value.schoolName}</div> 
           })}
         </ul>
 
