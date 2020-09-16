@@ -4,9 +4,24 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
+let monthMap = new Map([
+  ['01', "January"], 
+  ['02', "February"], 
+  ['03', "Match"], 
+  ['04', "April"], 
+  ['05', "May"], 
+  ['06', "June"], 
+  ['07', "July"], 
+  ['08', "August"], 
+  ['09', "September"], 
+  ['10', "October"], 
+  ['11', "November"], 
+  ['12', "December"]
+]);
+
 class Edu_info extends Component<{}, 
   { name: string, showModal: boolean, showSchoolList: boolean, 
-      educations: string[], edu_details: any[], schoolNames:string[] }> {
+      educations: Array<string>, edu_details: Array<any>, schoolNames:string[] }> {
   constructor(props:any) {
     super(props);
     
@@ -24,7 +39,6 @@ class Edu_info extends Component<{},
       schoolNames: []
     }
   }
-
 
   handleOpenModal () {
     this.setState({ showModal: true });
@@ -72,9 +86,17 @@ class Edu_info extends Component<{},
       description : edu.description.value
     }
 
-    this.state.educations.push(data.schoolName);
-    this.state.edu_details.push(data);
+    this.state.educations.unshift(data.schoolName);
+    this.state.edu_details.unshift(data);
     this.handleCloseModal();
+  }
+
+  parseDate(date:string) {
+    let year = date.substring(0, 4);
+    let month = date.substring(5,7)
+    if(month=='09' && year==="2020") return "Present";
+    console.log(month);
+    return monthMap.get(month)+" "+date.substring(0, 4);
   }
 
   render() {
@@ -128,7 +150,7 @@ class Edu_info extends Component<{},
 
             <div className="formDiv">
               <label>
-                Start Year: <input type="date" name="startY" min="2010-01-01" max="2020-9-16" required />
+                Start Year: <input type="date" name="startY"  min="2010-01-01" max="2020-9-16" required />
               </label>
             </div>
 
@@ -146,7 +168,7 @@ class Edu_info extends Component<{},
 
             <div className="formDiv">
               <label>
-                Description: <input type="text" name="description"/>
+                Description: <textarea name="description"/>
               </label>
             </div>
 
@@ -159,11 +181,25 @@ class Edu_info extends Component<{},
         {/* Side Panel */}
         <ul>
           {this.state.educations.map(value => {
-            return <li key={value}>{value}</li> 
+            return <div>{value}</div> 
           })}
         </ul>
 
         {/* Main Panel */}
+        <div>
+          { this.state.edu_details.map(data=> {
+              return (
+              <div className="eduDetail">
+                <h3>{data.degree} {data.major} @ {data.schoolName}</h3>
+                <h4>Cumulative GPA: {data.gpa}</h4>
+                <p> {this.parseDate(data.startY)} - {this.parseDate(data.endY)} </p>
+                <textarea rows={4}>{data.description}</textarea>
+              </div>
+              )
+          })
+          }
+        
+        </div>
       </div>
     );
   }

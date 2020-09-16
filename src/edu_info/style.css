@@ -46,7 +46,7 @@
   padding: '20px';
 }
 
-input[type=text], select {
+input[type=text], select, textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -92,7 +92,29 @@ ul {
 
 
 
-ul li {
+ul div {
   color: white;
   background: #5e5c57;
+}
+
+.eduDetail {
+  position: relative;
+  left: 35%;
+  color: white;
+  background: #5e5c57;
+  width:40%;
+  
+}
+
+.eduDetail div {
+  top: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+.eduDetail textarea {
+  background: #5e5c57;
+  border: none;
+  color:white;
 }
