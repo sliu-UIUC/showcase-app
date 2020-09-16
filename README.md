@@ -2,7 +2,6 @@
   React, Typescript.
   
 # Functionalities
--
 - Users are able to enter as many educational experiences as they please;
 - When the user is typing the name of the school they went, it should be auto completed using an API call. (Public api can be found here: http://universities.hipolabs.com/search?name=) 
 - Users can enter the following information: Name of School, Degree, Field of study, Start year, End Year (Or expected), Grade, a Description field, and anything else you wish to add.
