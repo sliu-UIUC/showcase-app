@@ -22,7 +22,7 @@ let monthMap = new Map([
 ]);
 
 class Edu_info extends Component<{}, 
-  { name: string, showModal: boolean, showSchoolList: boolean, edu_details: Array<any>, schoolNames:string[] }> {
+  { name: string, showModal: boolean, showSchoolList: boolean, edu_details: Array<any>, schoolNames:string[]}> {
   constructor(props:any) {
     super(props);
     
@@ -39,6 +39,7 @@ class Edu_info extends Component<{},
       schoolNames: []
     }
   }
+
 
   handleOpenModal () {
     this.setState({ showModal: true });
@@ -94,15 +95,14 @@ class Edu_info extends Component<{},
   parseDate(date:string) {
     let year = date.substring(0, 4);
     let month = date.substring(5,7)
-    if(month=='09' && year==="2020") return "Present";
-    console.log(month);
+    if(month==='09' && year==="2020") return "Present";
     return monthMap.get(month)+" "+date.substring(0, 4);
   }
 
   render() {
 
     return (
-      <div id="main">
+      <div>
         <p className="greetingTxt">Welcome to {this.state.name}'s education page</p>
         <button
           onClick={this.handleOpenModal}
@@ -130,8 +130,9 @@ class Edu_info extends Component<{},
                 type="text" name="schoolName" list="schools" required/>
               </label>
               <datalist id="schools">
-                            {this.state.schoolNames.map(name => {
-                              return <option value={name}></option>
+                            <option value="DEFAULT" disabled></option>
+                            {this.state.schoolNames.map((name, index) => {
+                              return <option key={name+index} value={name} />
                             })}
               </datalist>
             </div>
@@ -181,19 +182,19 @@ class Edu_info extends Component<{},
         {/* Side Panel */}
         <ul>
           {this.state.edu_details.map(value => {
-            return <div>{value.schoolName}</div> 
+            return <div key={value.schoolName}>{value.schoolName}</div> 
           })}
         </ul>
 
         {/* Main Panel */}
         <div>
-          { this.state.edu_details.map(data=> {
+          { this.state.edu_details.map((data, index)=> {
               return (
-              <div className="eduDetail">
+              <div className="eduDetail" key={data.schoolName+index}>
                 <h3>{data.degree} {data.major} @ {data.schoolName}</h3>
                 <h4>Cumulative GPA: {data.gpa}</h4>
                 <p> {this.parseDate(data.startY)} - {this.parseDate(data.endY)} </p>
-                <textarea rows={4}>{data.description}</textarea>
+                <textarea rows={4} value={data.description} readOnly/>
               </div>
               )
           })
