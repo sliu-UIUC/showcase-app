@@ -1,3 +1,5 @@
+(Was going to add safe check to make sure GPA field only contains numeric value and the start date and end date have to be legit; but I got caught up with some of my other things that I couldnt add them eventually.)
+
 # Tool used
   React, Typescript.
   
